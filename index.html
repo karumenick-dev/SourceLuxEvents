@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SourceLux Events | Luxury Wedding Planning & Coordination</title>
+    <!-- Google Fonts for Luxury Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-plum: #3d2230;
+            --bg-plum-dark: #2c1822;
+            --gold-accent: #e5d1b8;
+            --gold-light: #f7ede2;
+            --white: #ffffff;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-plum);
+            color: var(--gold-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--gold-accent);
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(61, 34, 48, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(229, 209, 184, 0.15);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-monogram {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold-accent);
+            border: 1.5px solid var(--gold-accent);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text .brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: var(--gold-accent);
+        }
+
+        .logo-text .tagline {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(247, 237, 226, 0.7);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gold-light);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--gold-accent);
+        }
+
+        .cta-btn {
+            background: transparent;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-accent);
+            color: var(--bg-plum);
+        }
+
+        /* Main Container & Sections */
+        .section-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 80px 20px;
+            position: relative;
+            text-align: center;
+            border-bottom: 1px solid rgba(229, 209, 184, 0.1);
+        }
+
+        /* Leaf Decorations */
+        .leaf-decor {
+            position: absolute;
+            width: 120px;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+        .leaf-top-left { top: 80px; left: 20px; transform: rotate(-15deg); }
+        .leaf-bottom-right { bottom: 20px; right: 20px; transform: rotate(45deg); width: 140px; }
+
+        /* Hero / Why Section */
+        .hero-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .divider {
+            width: 160px;
+            height: 1.5px;
+            background: var(--gold-accent);
+            margin: 30px auto;
+        }
+
+        .hero-subtext {
+            font-size: 18px;
+            font-style: italic;
+            color: rgba(247, 237, 226, 0.85);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards & Feature Lists */
+        .service-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .service-content h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .service-subtitle {
+            font-size: 22px;
+            margin-bottom: 40px;
+            color: var(--gold-accent);
+            font-weight: 400;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .feature-list li {
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 300;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: var(--gold-accent);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        /* Contact & Venue Section */
+        .contact-hero {
+            position: relative;
+            background: linear-gradient(rgba(61, 34, 48, 0.85), rgba(61, 34, 48, 0.95)), url('https://images.unsplash.com/photo-1519225437880-6671de27757d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(44, 24, 34, 0.85);
+            padding: 60px 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(229, 209, 184, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .contact-box h2 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            font-size: 16px;
+            margin-bottom: 40px;
+            color: rgba(247, 237, 226, 0.8);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            color: var(--gold-accent);
+        }
+
+        .contact-item svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--gold-accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-plum-dark);
+            text-align: center;
+            padding: 30px;
+            font-size: 13px;
+            color: rgba(247, 237, 226, 0.6);
+            border-top: 1px solid rgba(229, 209, 184, 0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            nav ul {
+                display: none; /* Can be expanded with mobile menu JS if needed */
+            }
+            .hero-content h1, .service-content h2, .contact-box h2 {
+                font-size: 36px;
+            }
+            .hero-content p, .service-subtitle {
+                font-size: 18px;
+            }
+            .feature-list li {
+                font-size: 16px;
+            }
+            .contact-box {
+                padding: 40px 20px;
+            }
+            .contact-details {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="logo-container">
+            <div class="logo-monogram">SL</div>
+            <div class="logo-text">
+                <span class="brand">SourceLux</span>
+                <span class="tagline">events</span>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#reassurance">Reassurance</a></li>
+                <li><a href="#after">After Wedding</a></li>
+                <li><a href="#contact" class="cta-btn">Let's Plan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section 1: Why SourceLux Events -->
+    <section id="why" class="section-container">
+        <svg class="leaf-decor leaf-top-left" viewBox="0 0 200 200"><path fill="#f4a261" d="M45.2,-58.3C58.1,-48.1,68.4,-33.5,73.4,-16.9C78.4,-0.3,78.2,18.4,70.3,33.1C62.4,47.8,46.8,58.6,30.3,66.1C13.8,73.7,-3.6,78,-20.5,74.2C-37.5,70.4,-54.1,58.6,-64.1,43.2C-74.1,27.9,-77.5,9,-74.6,-8.7C-71.7,-26.4,-62.4,-43,-48.7,-53.4C-35,-63.7,-17.5,-67.8,0.2,-68C17.9,-68.2,32.3,-68.5,45.2,-58.3Z" transform="translate(100 100)"/></svg>
+        <svg class="leaf-decor leaf-bottom-right" viewBox="0 0 200 200"><path fill="#f4a261" d="M39.5,-51.5C51.5,-41.8,61.7,-30.2,68.1,-16.4C74.6,-2.6,77.3,13.4,71.7,27.1C66.1,40.8,52.2,52.2,37.3,60.6C22.4,69,6.5,74.4,-9.1,73.2C-24.7,72,-40.1,64.2,-52.1,52.1C-64.1,40.1,-72.7,23.8,-75.1,6.1C-77.5,-11.6,-73.7,-30.9,-62.4,-41.2C-51.1,-51.6,-32.4,-53,-16.4,-58.9C-0.3,-64.8,13.1,-75.2,27.4,-72C41.7,-68.8,56.9,-52,39.5,-51.5Z" transform="translate(100 100)"/></svg>
+
+        <div class="hero-content">
+            <h1>Why SourceLuxEvents</h1>
+            <p>Because you deserve to feel calm, confident, and taken care of.</p>
+            <div class="divider"></div>
+            <p class="hero-subtext">We are present every step of the way not just as planners, but as people who genuinely care.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Wedding Day - Reassurance -->
+    <section id="reassurance" class="section-container">
+        <div class="service-content">
+            <h2>Wedding Day – Reassurance</h2>
+            <p class="service-subtitle">No confusion. No delays. No stress.</p>
+            <ul class="feature-list">
+                <li>Full coordination & supervision</li>
+                <li>Vendor management</li>
+                <li>Program flow & timekeeping</li>
+                <li>Smooth, seamless execution</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 3: After the Wedding -->
+    <section id="after" class="section-container">
+        <div class="service-content">
+            <h2>After the Wedding</h2>
+            <p class="service-subtitle">We're with you even after "I do":</p>
+            <ul class="feature-list">
+                <li>Vendor follow-ups</li>
+                <li>Gift & item coordination</li>
+                <li>Organized, stress-free wrap-up</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 4: Contact / Let's Plan Your Special Day -->
+    <section id="contact" class="section-container contact-hero">
+        <div class="contact-box">
+            <h2>Let’s plan your special day</h2>
+            <p>Send us a message to get started</p>
+            
+            <div class="contact-details">
+                <a href="tel:0791048506" class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    0791048506
+                </a>
+                <a href="mailto:sourceeventske@gmail.com" class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    sourceeventske@gmail.com
+                </a>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Ngong Road / Nairobi
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SourceLux Events. All rights reserved.</p>
+    </footer>
+
+    <!-- Smooth Scrolling JavaScript -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
